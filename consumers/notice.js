@@ -15,7 +15,10 @@ amqp.connect(CONN_URL, function (err, conn) {
 		throw new Error("error(In creating channel): ", err)
 	   }
 		channel = rchannel;
-	
+		//Create queue
+		channel.assertQueue(process.env.NOTICE, {
+			durable: true
+		});
 		channel.consume(process.env.NOTICE, async function (msg) {
 			
 			let data = JSON.parse(msg.content);			
