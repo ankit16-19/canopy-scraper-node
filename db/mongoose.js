@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-mongoose.connect("mongodb://172.18.0.2:27017/canopy", {
+mongoose.connect(process.env.MONGO_CONN_URL, {
 	useNewUrlParser: true,
 	useCreateIndex: true,
 	useFindAndModify: true
